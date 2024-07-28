@@ -98,7 +98,7 @@ To install Main, use the following command:
 pip install Main
 ```
 
-### Training a Neural Network
+### Training the Neural Network
 
 The `trail.ipynb` notebook provides a comprehensive demonstration of training a 2-layer neural network (MLP) for binary classification. This involves initializing a neural network from the `Main.neuralnet` module, implementing a simple Support Vector Machine (SVM) "max-margin" binary classification loss, and optimizing using Stochastic Gradient Descent (SGD). As illustrated in the notebook, employing a 2-layer neural network with two 16-node hidden layers results in an effective decision boundary on the moon dataset.
 
