@@ -102,22 +102,6 @@ pip install Main
 
 The `demo.ipynb` notebook provides a comprehensive demonstration of training a 2-layer neural network (MLP) for binary classification. This involves initializing a neural network from the `Main.neuralnet` module, implementing a simple Support Vector Machine (SVM) "max-margin" binary classification loss, and optimizing using Stochastic Gradient Descent (SGD). As illustrated in the notebook, employing a 2-layer neural network with two 16-node hidden layers results in an effective decision boundary on the moon dataset.
 
-### Visualization
-
-For enhanced convenience, the `viz.ipynb` notebook generates Graphviz visualizations. For instance, the visualization below represents a simple 2D neuron, created by invoking `draw_dot` on the following code. It displays both the data (left number in each node) and the gradient (right number in each node).
-
-```python
-from Main import neuralnet
-n = neuralnet.Neuron(2)
-x = [Value(1.0), Value(-2.0)]
-y = n(x)
-dot = draw_dot(y)
-```
-
-![2D Neuron](gout.svg)
-
-These visualizations facilitate a clearer understanding of the data flow and gradient propagation within the network.
-
 ### License
 
 This repository is licensed under the MIT License. This permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.
