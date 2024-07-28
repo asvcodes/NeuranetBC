@@ -91,14 +91,6 @@ Parameter Update:
 
 Main has a compact Autograd engine that implements backpropagation (reverse-mode autodiff) over a dynamically built Directed Acyclic Graph (DAG) along with a very small neural net lib. The DAG operates exclusively on scalar values, which means each neuron is broken down into individual tiny addition and multiplication operations. Despite this granular approach, it is capable of constructing entire deep neural networks for binary classification, as demonstrated in the accompanying notebook.
 
-### Installation
-
-To install Main, use the following command:
-
-```bash
-pip install Main
-```
-
 ### Training the Neural Network
 
 The `trail.ipynb` notebook provides a comprehensive demonstration of training a 2-layer neural network (MLP) for binary classification. This involves initializing a neural network from the `Main.neuralnet` module, implementing a simple Support Vector Machine (SVM) "max-margin" binary classification loss, and optimizing using Stochastic Gradient Descent (SGD). As illustrated in the notebook, employing a 2-layer neural network with two 16-node hidden layers results in an effective decision boundary on the moon dataset.
