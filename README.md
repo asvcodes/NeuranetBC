@@ -88,7 +88,7 @@ Parameter Update:
 
 ## Main
 
-Main is a compact Autograd engine that implements backpropagation (reverse-mode autodiff) over a dynamically built Directed Acyclic Graph (DAG). The DAG operates exclusively on scalar values, which means each neuron is broken down into individual tiny addition and multiplication operations. Despite this granular approach, it is capable of constructing entire deep neural networks for binary classification, as demonstrated in the accompanying notebook.
+Main has a compact Autograd engine that implements backpropagation (reverse-mode autodiff) over a dynamically built Directed Acyclic Graph (DAG) along with a very small neural net lib. The DAG operates exclusively on scalar values, which means each neuron is broken down into individual tiny addition and multiplication operations. Despite this granular approach, it is capable of constructing entire deep neural networks for binary classification, as demonstrated in the accompanying notebook.
 
 ### Installation
 
