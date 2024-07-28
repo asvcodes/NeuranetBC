@@ -107,4 +107,7 @@ The `trail.ipynb` notebook provides a comprehensive demonstration of training a 
 
 This repository is licensed under the MIT License. This permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.
 
+### Credits
+Andrej Karpathy and Nitish Singh (CampusX)
+
 ---
