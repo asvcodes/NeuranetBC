@@ -1,69 +1,123 @@
 
-# micrograd
+# Neural Networks: Theory
 
-![awww](puppy.jpg)
+![a Neural Network - DAG](https://d3lkc3n5th01x7.cloudfront.net/wp-content/uploads/2023/05/30234805/What-are-neural-networks-Banner.svg "a Neural Network - DAG")
 
-A tiny Autograd engine (with a bite! :)). Implements backpropagation (reverse-mode autodiff) over a dynamically built DAG and a small neural networks library on top of it with a PyTorch-like API. Both are tiny, with about 100 and 50 lines of code respectively. The DAG only operates over scalar values, so e.g. we chop up each neuron into all of its individual tiny adds and multiplies. However, this is enough to build up entire deep neural nets doing binary classification, as the demo notebook shows. Potentially useful for educational purposes.
+A neural network is a method in artificial intelligence that teaches computers to process data in a way that is inspired by the human brain. It is a type of machine learning process, called deep learning, that uses interconnected nodes or neurons in a layered structure that resembles the human brain.
+
+## 1. Neurons: The Building Blocks
+
+Artificial neurons are the fundamental units of neural networks, inspired by biological neurons in the brain. They process and transmit information through the network.
+
+### Key Components:
+- **Inputs**: Receive data from other neurons or external sources.
+- **Weights**: Determine the importance of each input.
+- **Bias**: Adds a constant term to adjust the neuron's activation.
+- **Activation Function**: Introduces non-linearity, allowing the network to learn complex patterns.
+
+### Mathematical Representation:
+output = activation_function( ∑ (inputs × weights) + bias)
+
+## 2. Layers: Structuring the Network
+
+Neural networks are organized into layers of neurons, each serving a specific purpose in the information processing pipeline.
+
+### Types of Layers:
+1. **Input Layer**: Receives raw data.
+2. **Hidden Layers**: Process information and extract features.
+3. **Output Layer**: Produces the final prediction or classification.
+
+## 3. Multi-Layer Perceptron (MLP)
+
+An MLP is a type of feedforward neural network consisting of multiple layers of neurons. It's capable of learning complex, non-linear relationships in data.
+
+### Architecture:
+- Input Layer → Hidden Layer(s) → Output Layer
+
+### Key Features:
+- Fully connected layers.
+- Non-linear activation functions (e.g., ReLU, Sigmoid, Tanh).
+- Capable of universal function approximation.
+
+## 4. Backpropagation and Gradient Descent
+
+Backpropagation and gradient descent are the core algorithms used to train neural networks.
+
+### Backpropagation:
+A method to calculate gradients of the loss function with respect to the network's parameters (weights and biases).
+
+### Gradient Descent:
+An optimization algorithm that iteratively adjusts the network's parameters to minimize the loss function.
+
+## 5. Training Process: Forward Pass, Backward Pass, and Optimization
+
+### Forward Pass:
+1. Input data flows through the network.
+2. Each neuron computes its output.
+3. The final layer produces the prediction.
+
+### Backward Pass (Backpropagation):
+1. Calculate the error (difference between prediction and actual output).
+2. Compute gradients of the loss with respect to each parameter.
+3. Propagate the error backwards through the network.
+
+### Optimization:
+1. Update weights and biases using gradients and learning rate.
+2. Repeat the process for multiple epochs.
+
+### Mathematical Representation:
+Parameter Update:
+𝜃new = 𝜃old − learning_rate × gradient
+
+
+## 6. Key Concepts in Training
+
+- **Loss Function**: Measures the difference between predicted and actual outputs.
+- **Learning Rate**: Controls the step size in parameter updates.
+- **Epochs**: Number of times the entire dataset is passed through the network.
+- **Batch Size**: Number of samples processed before parameter update.
+
+## 7. Advanced Techniques
+
+- **Regularization**: Techniques like L1, L2, and Dropout to prevent overfitting.
+- **Optimization Algorithms**: Advanced methods such as Adam and RMSprop.
+- **Batch Normalization**: Normalizes inputs of each layer to improve training.
+- **Transfer Learning**: Leveraging pre-trained models for new tasks.
+
+# Repository Overview
+
+## Main
+
+Main is a compact Autograd engine that implements backpropagation (reverse-mode autodiff) over a dynamically built Directed Acyclic Graph (DAG). The DAG operates exclusively on scalar values, which means each neuron is broken down into individual tiny addition and multiplication operations. Despite this granular approach, it is capable of constructing entire deep neural networks for binary classification, as demonstrated in the accompanying notebook.
 
 ### Installation
 
+To install Main, use the following command:
+
 ```bash
-pip install micrograd
+pip install Main
 ```
 
-### Example usage
+### Training a Neural Network
 
-Below is a slightly contrived example showing a number of possible supported operations:
+The `demo.ipynb` notebook provides a comprehensive demonstration of training a 2-layer neural network (MLP) for binary classification. This involves initializing a neural network from the `Main.neuralnet` module, implementing a simple Support Vector Machine (SVM) "max-margin" binary classification loss, and optimizing using Stochastic Gradient Descent (SGD). As illustrated in the notebook, employing a 2-layer neural network with two 16-node hidden layers results in an effective decision boundary on the moon dataset.
 
-```python
-from micrograd.engine import Value
+### Visualization
 
-a = Value(-4.0)
-b = Value(2.0)
-c = a + b
-d = a * b + b**3
-c += c + 1
-c += 1 + c + (-a)
-d += d * 2 + (b + a).relu()
-d += 3 * d + (b - a).relu()
-e = c - d
-f = e**2
-g = f / 2.0
-g += 10.0 / f
-print(f'{g.data:.4f}') # prints 24.7041, the outcome of this forward pass
-g.backward()
-print(f'{a.grad:.4f}') # prints 138.8338, i.e. the numerical value of dg/da
-print(f'{b.grad:.4f}') # prints 645.5773, i.e. the numerical value of dg/db
-```
-
-### Training a neural net
-
-The notebook `demo.ipynb` provides a full demo of training an 2-layer neural network (MLP) binary classifier. This is achieved by initializing a neural net from `micrograd.nn` module, implementing a simple svm "max-margin" binary classification loss and using SGD for optimization. As shown in the notebook, using a 2-layer neural net with two 16-node hidden layers we achieve the following decision boundary on the moon dataset:
-
-![2d neuron](moon_mlp.png)
-
-### Tracing / visualization
-
-For added convenience, the notebook `trace_graph.ipynb` produces graphviz visualizations. E.g. this one below is of a simple 2D neuron, arrived at by calling `draw_dot` on the code below, and it shows both the data (left number in each node) and the gradient (right number in each node).
+For enhanced convenience, the `viz.ipynb` notebook generates Graphviz visualizations. For instance, the visualization below represents a simple 2D neuron, created by invoking `draw_dot` on the following code. It displays both the data (left number in each node) and the gradient (right number in each node).
 
 ```python
-from micrograd import nn
-n = nn.Neuron(2)
+from Main import neuralnet
+n = neuralnet.Neuron(2)
 x = [Value(1.0), Value(-2.0)]
 y = n(x)
 dot = draw_dot(y)
 ```
 
-![2d neuron](gout.svg)
+![2D Neuron](gout.svg)
 
-### Running tests
-
-To run the unit tests you will have to install [PyTorch](https://pytorch.org/), which the tests use as a reference for verifying the correctness of the calculated gradients. Then simply:
-
-```bash
-python -m pytest
-```
+These visualizations facilitate a clearer understanding of the data flow and gradient propagation within the network.
 
 ### License
 
-MIT
+This repository is licensed under the MIT License. This permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.
