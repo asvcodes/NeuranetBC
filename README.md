@@ -33,6 +33,8 @@ Neural networks are organized into layers of neurons, each serving a specific pu
 An MLP is a type of feedforward neural network consisting of multiple layers of neurons. It's capable of learning complex, non-linear relationships in data.
 
 ### Architecture:
+![image](https://github.com/user-attachments/assets/0057ca29-24c0-4e2c-a767-86a091a781e6)
+
 - Input Layer → Hidden Layer(s) → Output Layer
 
 ### Key Features:
@@ -46,9 +48,12 @@ Backpropagation and gradient descent are the core algorithms used to train neura
 
 ### Backpropagation:
 A method to calculate gradients of the loss function with respect to the network's parameters (weights and biases).
+![image](https://github.com/user-attachments/assets/57b1f042-0f88-4607-b92c-4956bf021673)
 
 ### Gradient Descent:
 An optimization algorithm that iteratively adjusts the network's parameters to minimize the loss function.
+
+![image](https://github.com/user-attachments/assets/125fbaac-8b88-48f9-925f-5d0f2a9a49ab)
 
 ## 5. Training Process: Forward Pass, Backward Pass, and Optimization
 
