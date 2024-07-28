@@ -6,6 +6,7 @@
 A neural network is a method in artificial intelligence that teaches computers to process data in a way that is inspired by the human brain. It is a type of machine learning process, called deep learning, that uses interconnected nodes or neurons in a layered structure that resembles the human brain.
 
 ## 1. Neurons: The Building Blocks
+![image](https://github.com/user-attachments/assets/5ec5f07d-a630-4c17-a5c6-11f7cd0d713a)
 
 Artificial neurons are the fundamental units of neural networks, inspired by biological neurons in the brain. They process and transmit information through the network.
 
